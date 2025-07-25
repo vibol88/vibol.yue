@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For You</title>
+    <title>A Little Something For You</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -26,7 +26,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to right top, #f0e6f6, #f8e1eb); /* Match body background */
+            background: linear-gradient(to right top, #e9d5ff, #fbcfe8); /* Match body background */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -47,7 +47,7 @@
             position: relative; /* Needed for absolute positioning of inner card */
         }
         .card-inner {
-            transition: transform 0.8s cubic-bezier(0.5, 0, 0.5, 1); /* Smoother, less aggressive bounce */
+            transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* More bouncy/elastic feel */
             transform-style: preserve-3d;
             position: absolute; /* Make inner card absolute to fill container */
             width: 100%;
@@ -58,7 +58,7 @@
         .card-front, .card-back {
             backface-visibility: hidden;
             border-radius: 1.5rem; /* rounded-3xl */
-            padding: 1.5rem; /* Default smaller padding for mobile */
+            padding: 2.5rem; /* p-10 */
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -72,13 +72,6 @@
             left: 0;
             transition: opacity 0.3s ease-in-out;
         }
-        /* Apply larger padding for medium screens and up */
-        @media (min-width: 768px) { /* md breakpoint in Tailwind */
-            .card-front, .card-back {
-                padding: 2.5rem; /* p-10 */
-            }
-        }
-
         .card-front {
             background-color: #ffffff; /* bg-white */
             color: #4b5563; /* text-gray-600 */
@@ -109,7 +102,7 @@
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-            transition-delay: 0.1s; /* Reduced delay for content to appear sooner */
+            transition-delay: 0.3s;
         }
         .card-container.flipped .card-back h2,
         .card-container.flipped .card-back p,
@@ -148,7 +141,6 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden; /* Ensure floating elements don't overflow this zone */
         }
         .image-wrapper {
             position: relative;
@@ -159,14 +151,16 @@
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             transition: transform 0.3s ease-in-out;
             z-index: 10;
+            /* Initial state for image animation */
             opacity: 0;
             transform: scale(0.8);
         }
         .image-wrapper.show {
+            /* Final state for image animation */
             opacity: 1;
             transform: scale(1);
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-            transition-delay: 0.3s; /* Reduced delay for faster image entrance */
+            transition-delay: 0.5s; /* Delay after password input is gone */
         }
         .image-wrapper:hover {
             transform: scale(1.03);
@@ -258,15 +252,15 @@
         </div>
     </div>
 
-    <div class="card-container mx-auto rounded-3xl shadow-xl p-6 md:p-10 bg-white">
+    <div class="card-container mx-auto rounded-3xl shadow-xl p-6 md:p-10 bg-white h-[600px]">
         <div class="card-inner">
             <!-- Front of the card -->
-            <div class="card-front">
-                <h1 class="text-3xl md:text-5xl font-extrabold text-purple-800 mb-4">Hey YuE</h1>
+            <div class="card-front h-[600px]">
+                <h1 class="text-4xl md:text-5xl font-extrabold text-purple-800 mb-4">Hey YuE</h1>
 
                 <!-- Date and Time Display -->
                 <div class="text-center text-gray-700 mb-6">
-                    <p id="currentDateTime" class="text-lg md:text-2xl font-semibold"></p>
+                    <p id="currentDateTime" class="text-xl md:text-2xl font-semibold"></p>
                 </div>
 
                 <div class="animated-image-zone">
@@ -279,7 +273,7 @@
                     <div class="floating-element heart-2">💖</div>
                     <div class="floating-element star-2">🌟</div>
                 </div>
-                <p class="text-base md:text-xl text-gray-600 mb-8 leading-relaxed">
+                <p class="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed">
                     Just wanted to send a little something your way to remind you how much you mean to me.
                 </p>
                 <button id="revealButton" class="shine-button bg-purple-700 hover:bg-purple-800 text-white font-bold py-3 px-6 rounded-full shadow-lg transform transition duration-300 ease-in-out hover:scale-105 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-75" aria-label="Click to reveal a surprise message">
@@ -288,13 +282,13 @@
             </div>
 
             <!-- Back of the card (hidden message) -->
-            <div class="card-back">
-                <h2 class="text-2xl md:text-4xl font-extrabold mb-4">My Princess❤️</h2>
-                <p class="text-lg md:text-2xl leading-relaxed mb-8">
+            <div class="card-back h-[600px]">
+                <h2 class="text-3xl md:text-4xl font-extrabold mb-4">My Princess❤️</h2>
+                <p class="text-xl md:text-2xl leading-relaxed mb-8">
                     ជូនចំពោះព្រះនាងរបស់បង។បងដឹងថាបងមិនមែនជាមនុស្សប្រុសល្អអ្វីទេតែបងនឹងសន្យាថានឹងមើលថែអូន ស្រឡាញអូនអោយដូចពេជ្យទឹក១០។បងស្លាញ់អូន ពិន យូអុី ❤️
                 </p>
-                <p class="text-base mt-6 mb-8">
-                    ❤️B sl o❤️
+                <p class="text-lg mt-6 mb-8">
+                     ❤️B sl o❤️
                 </p>
                 <button id="backButton" class="shine-button bg-white text-purple-700 hover:bg-gray-100 font-bold py-3 px-6 rounded-full shadow-lg transform transition duration-300 ease-in-out hover:scale-105 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-75" aria-label="Click to go back to the front of the card">
                     Go Back
@@ -309,40 +303,45 @@
             const passwordInput = document.getElementById('passwordInput');
             const enterButton = document.getElementById('enterButton');
             const errorMessage = document.getElementById('errorMessage');
-            const imageWrapper = document.getElementById('imageWrapper');
+            const imageWrapper = document.getElementById('imageWrapper'); // Get image wrapper for animation
 
             const revealButton = document.getElementById('revealButton');
             const backButton = document.getElementById('backButton');
             const cardContainer = document.querySelector('.card-container');
             const currentDateTimeElement = document.getElementById('currentDateTime');
 
-            const correctPassword = "180125";
+            const correctPassword = "180125"; // The password you requested
 
+            // Function to update date and time
             function updateDateTime() {
                 const now = new Date();
                 const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true };
-                currentDateTimeElement.textContent = now.toLocaleDateString('km-KH', options); // Using 'km-KH' for Khmer locale
+                currentDateTimeElement.textContent = now.toLocaleDateString('en-US', options); // Using en-US for standard format
             }
 
+            // Initial call and set interval for updating time
             updateDateTime();
             setInterval(updateDateTime, 1000);
 
+            // Password check logic
             enterButton.addEventListener('click', () => {
                 if (passwordInput.value === correctPassword) {
-                    passwordOverlay.classList.add('hidden');
+                    passwordOverlay.classList.add('hidden'); // Hide overlay
                     imageWrapper.classList.add('show'); // Trigger image animation
                 } else {
-                    errorMessage.classList.remove('hidden');
-                    passwordInput.value = '';
+                    errorMessage.classList.remove('hidden'); // Show error message
+                    passwordInput.value = ''; // Clear input
                 }
             });
 
+            // Allow pressing Enter key for password submission
             passwordInput.addEventListener('keypress', (e) => {
                 if (e.key === 'Enter') {
                     enterButton.click();
                 }
             });
 
+            // Card flip logic
             if (revealButton && backButton && cardContainer) {
                 revealButton.addEventListener('click', () => {
                     cardContainer.classList.add('flipped');
